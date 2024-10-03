@@ -1,0 +1,106 @@
+body{
+    background-color: #212121;
+}
+.speechbar{
+    position: fixed;
+    bottom: 5vh;
+    background-color: #e4e4e4;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 48em;
+    gap: 10px;
+    .textfield{
+        width: 90%;
+        overflow-y: auto;
+        max-height: 200px;
+        min-height: 45px;
+        outline: none;
+        border: none;
+        font-size: 18px;
+        background-color: #e4e4e4;
+        padding: 11px 0px;
+    }
+    .textfield::placeholder{
+        font-size: 18px;
+    }
+    .micattach{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        margin: auto 0px 8px 13px;
+        gap: 5px;
+    }
+    .senddiv{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        margin: auto 3px 2px 0;
+        .sendicon{
+            font-size: 40px;
+        }
+    }
+    .speechicon{
+        font-size: 25px;
+    }
+    .attachment{
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: "810px") {
+    .speechbar{
+        position: fixed;
+        bottom: 5vh;
+        background-color: #e4e4e4;
+        border-radius: 25px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 95%;
+        gap: 10px;
+        .textfield{
+            width: 90%;
+            overflow-y: auto;
+            max-height: 200px;
+            min-height: 45px;
+            outline: none;
+            border: none;
+            font-size: 18px;
+            background-color: #e4e4e4;
+            padding: 11px 0px;
+        }
+        .textfield::placeholder{
+            font-size: 18px;
+        }
+        .micattach{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            // border: 2px solid red;
+            margin: auto 0 8px 13px;
+            gap: 5px;
+        }
+        .senddiv{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto 3px 2px 0;
+            .sendicon{
+                font-size: 40px;
+            }
+        }
+        .speechicon{
+            font-size: 25px;
+        }
+        .attachment{
+            font-size: 28px;
+        }
+    }
+    
+}
