@@ -11,6 +11,7 @@ import { addQuestion, addresult } from "../ReduxStore/Slice";
 import { queryFriday } from "../Services/FridayServices";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { okaidia } from "react-syntax-highlighter/dist/esm/styles/prism";
+import fridayimage from "../../assets/Robot.jpg"
 
 function FridayResponse() {
   const queryData = [
@@ -100,8 +101,8 @@ function FridayResponse() {
                 </section>
                 <section className="ai section">
                   <img
-                    src="src/assets/Graident Ai Robot.jpg"
-                    alt="AI Robot"
+                    src={fridayimage}
+                    alt="FRIDAY"
                     height={30}
                     width={30}
                   />
@@ -119,7 +120,7 @@ function FridayResponse() {
         ) : (
           <div className="initial">
             <img
-              src="src/assets/Graident Ai Robot.jpg"
+              src={fridayimage}
               alt="Friday"
               height={60}
               width={60}
