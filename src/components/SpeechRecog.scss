@@ -10,7 +10,7 @@ body{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 48em;
+    width: 46em;
     gap: 10px;
     .textfield{
         width: 90%;
@@ -61,7 +61,7 @@ body{
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        width: 95%;
+        width: 90%;
         gap: 10px;
         .textfield{
             width: 90%;
@@ -82,7 +82,6 @@ body{
             flex-direction: row;
             align-items: center;
             justify-content: flex-start;
-            // border: 2px solid red;
             margin: auto 0 8px 13px;
             gap: 5px;
         }
