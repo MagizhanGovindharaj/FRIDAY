@@ -12,7 +12,6 @@ function App() {
     <div className='parent'>
       <Provider store={Store}>
       <FridayResponse className="friday"/>
-      <SpeechRecog className="speechrecog"/>
       </Provider>
     </div>
   )

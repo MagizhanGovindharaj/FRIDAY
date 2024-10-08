@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../Response/FridayResponse.scss";
+import SpeechRecog from "../SpeechRecog";
 import { useSelector, useDispatch } from "react-redux";
 import { TbPresentationAnalytics } from "react-icons/tb";
 import { LiaFlagUsaSolid } from "react-icons/lia";
@@ -52,8 +53,8 @@ function FridayResponse() {
   const utterence = new SpeechSynthesisUtterance(
     "Hello There, I am Friday, Developed by Magilan How can i help You"
   );
-  utterence.pitch = 1.1;
-  utterence.rate = 1;
+  utterence.pitch = 1.2;
+  utterence.rate = 0.9;
 
   const allData = useSelector((state) => state.questionData);
   const dispatch = useDispatch();
@@ -162,7 +163,8 @@ function FridayResponse() {
             </section>
           </div>
         )}
-        <section className="emptyspace"></section>
+        <SpeechRecog/>
+        {/* <section className="emptyspace"></section> */}
       </div>
     </div>
   );

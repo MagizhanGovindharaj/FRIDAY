@@ -21,7 +21,7 @@
         align-items: center;
         justify-content: flex-end;
         gap: 10px;
-        margin: 80px 0 0 0;
+        margin: 40px 0 0 0;
         min-height: 50px;
         .query {
           font-family: system-ui;
@@ -50,7 +50,7 @@
           min-height: auto;
           color: white;
           border-radius: 10px;
-          padding: 5px 15px 8px 15px;
+          padding: 5px 15px 40px 15px;
           overflow-wrap: break-word;
           white-space: pre-wrap;
           border-radius: 20px;
@@ -79,6 +79,7 @@
             font-style: normal;
             color: rgb(243, 243, 243);
             white-space: pre-wrap; /* Preserve newlines and wrap long lines */
+            padding-bottom: 50px;
           }
         }
         img {
@@ -151,7 +152,7 @@
   .responsetab {
     .aicontent {
       width: 46em;
-      height: 90vh;
+      height: 88vh;
       .initial {
         display: flex;
         flex-direction: column;
@@ -193,7 +194,7 @@
   .responsetab {
     .aicontent {
       max-width: 95%;
-      height: 90vh;
+      height: 88vh;
       display: flex;
       align-items: center;
       .innerdiv {
