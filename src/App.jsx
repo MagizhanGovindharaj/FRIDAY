@@ -11,7 +11,7 @@ function App() {
   return (
     <div className='parent'>
       <Provider store={Store}>
-      <FridayResponse/>
+      <FridayResponse className="friday"/>
       <SpeechRecog className="speechrecog"/>
       </Provider>
     </div>

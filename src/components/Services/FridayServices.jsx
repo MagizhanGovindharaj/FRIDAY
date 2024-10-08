@@ -33,11 +33,7 @@ export const queryFriday =async(text)=> {
       ) {
         let content = result.candidates[0].content.parts[0].text;
         console.log(content);
-        return content
-          .replaceAll(/\\n/g, "\n")
-          .replaceAll(/```/g, "")
-          .replaceAll(/\\/g, "")
-          .replaceAll(/`/g, "");
+        return content;
       } else {
         return "No response from Gemini AI.";
       }

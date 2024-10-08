@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../Response/FridayResponse.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { TbPresentationAnalytics } from "react-icons/tb";
@@ -11,7 +11,11 @@ import { addQuestion, addresult } from "../ReduxStore/Slice";
 import { queryFriday } from "../Services/FridayServices";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { okaidia } from "react-syntax-highlighter/dist/esm/styles/prism";
-import fridayimage from "../../assets/Robot.jpg"
+import docco from 'react-syntax-highlighter/dist/esm/styles/hljs/docco';
+import fridayimage from "../../assets/Robot_F.png";
+import fridayjpg from "../../assets/Robot.jpg"
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 function FridayResponse() {
   const queryData = [
@@ -40,13 +44,13 @@ function FridayResponse() {
       content: "Pick outfit to look good on camera",
     },
   ];
-
+  const messageEndRef = useRef(null);
   const [initialQuery, setInitialQuery] = useState(
     queryData.sort(() => 0.5 - Math.random()).slice(0, 4)
   );
 
   const utterence = new SpeechSynthesisUtterance(
-    "Hello Boss I am Friday How can i help you"
+    "Hello There, I am Friday, Developed by Magilan How can i help You"
   );
   utterence.pitch = 1.1;
   utterence.rate = 1;
@@ -89,6 +93,12 @@ function FridayResponse() {
     }
   }, []);
 
+  useEffect(()=>{
+    if(messageEndRef.current){
+      messageEndRef.current.scrollIntoView({Behavior:"smooth"});
+    }
+  },[responseData])
+
   return (
     <div className="responsetab">
       <div className="aicontent">
@@ -97,21 +107,35 @@ function FridayResponse() {
             return (
               <div className="innerdiv" key={index}>
                 <section className="usersection">
-                  <p>{element[0]}</p>
+                  <p className="query">{element[0]}</p>
                 </section>
-                <section className="ai section">
-                  <img
-                    src={fridayimage}
-                    alt="FRIDAY"
-                    height={30}
-                    width={30}
-                  />
-                  {element[1].includes("*") ? (
-                    <SyntaxHighlighter language="javascript" style={okaidia}>
-                      {element[1]}
-                    </SyntaxHighlighter>
+                <section className="ai section" ref={messageEndRef}>
+                  <img src={fridayimage} alt="FRIDAY" />
+                  {element[1].includes("```") ? (
+                    <div className="result">
+                      <p className="codeheader">
+                        {element[1].split("\n", 1)[0].replace("```", "")}
+                      </p>
+                      <SyntaxHighlighter
+                        language="javascript"
+                        style={okaidia}
+                        className="texthighlighter"
+                      >
+                        {element[1]
+                          .slice(0, element[1].indexOf("```", 3))
+                          .split("\n")
+                          .slice(1)
+                          .join("\n")}
+                      </SyntaxHighlighter>
+                      <Markdown
+                        remarkPlugins={[remarkGfm]}
+                        className="code-content"
+                      >
+                        {element[1].slice(element[1].indexOf("```", 3) + 3)}
+                      </Markdown>
+                    </div>
                   ) : (
-                    <p>{element[1]}</p>
+                    <pre className="alternatepara">{element[1]}</pre>
                   )}
                 </section>
               </div>
@@ -119,12 +143,7 @@ function FridayResponse() {
           })
         ) : (
           <div className="initial">
-            <img
-              src={fridayimage}
-              alt="Friday"
-              height={60}
-              width={60}
-            />
+            <img src={fridayjpg} alt="Friday" />
             <section>
               {initialQuery.map((element, index) => {
                 return (

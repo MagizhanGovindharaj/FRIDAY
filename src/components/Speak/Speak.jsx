@@ -25,8 +25,5 @@ function Speak({ content }) {
     );
 }
 
-// Speak.defaultProps = {
-//     content: "Hello, this is the default content!"
-// };
 
 export default Speak;
