@@ -3,7 +3,7 @@ body {
 }
 .speechbar {
   position: fixed;
-  top: 88vh;
+  bottom: 12vh;
   background-color: #e4e4e4;
   border-radius: 25px;
   display: flex;
@@ -56,7 +56,7 @@ body {
 @media screen and (min-width: "810px") and (max-width: "1280px") {
     .speechbar {
         position: fixed;
-        top: 88vh;
+        bottom: 12vh;
         background-color: #e4e4e4;
         border-radius: 25px;
         display: flex;
@@ -70,7 +70,7 @@ body {
 @media screen and (max-width: "810px") {
   .speechbar {
     position: fixed;
-    top: 85vh;
+    bottom: 15vh;
     background-color: #e4e4e4;
     border-radius: 25px;
     display: flex;
