@@ -47,7 +47,7 @@
         pre {
           font-family: system-ui;
           max-width: 100%;
-          min-height: auto;
+          // min-height: auto;
           color: white;
           border-radius: 10px;
           padding: 5px 15px 40px 15px;
@@ -194,7 +194,7 @@
   .responsetab {
     .aicontent {
       max-width: 95%;
-      height: 90vh;
+      height: 88vh;
       display: flex;
       align-items: center;
       .innerdiv {
