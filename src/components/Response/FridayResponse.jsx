@@ -12,11 +12,11 @@ import { addQuestion, addresult } from "../ReduxStore/Slice";
 import { queryFriday } from "../Services/FridayServices";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { okaidia } from "react-syntax-highlighter/dist/esm/styles/prism";
-import docco from 'react-syntax-highlighter/dist/esm/styles/hljs/docco';
 import fridayimage from "../../assets/Robot_F.png";
-import fridayjpg from "../../assets/Robot.jpg"
-import Markdown from "react-markdown";
+import fridayjpg from "../../assets/Robot.jpg";
+import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 function FridayResponse() {
   const queryData = [
@@ -46,6 +46,7 @@ function FridayResponse() {
     },
   ];
   const messageEndRef = useRef(null);
+  const [day,setDay] = useState(null);
   const [initialQuery, setInitialQuery] = useState(
     queryData.sort(() => 0.5 - Math.random()).slice(0, 4)
   );
@@ -93,12 +94,18 @@ function FridayResponse() {
       }, 2000);
     }
   }, []);
-
-  useEffect(()=>{
-    if(messageEndRef.current){
-      messageEndRef.current.scrollIntoView({Behavior:"smooth"});
+  useEffect(() => {
+    if (messageEndRef.current) {
+      messageEndRef.current.scrollIntoView({ Behavior: "smooth" });
     }
-  },[responseData])
+
+    if(Number(new Date().toLocaleTimeString().split(":")[1])<=5 && Number(new Date().toLocaleTimeString().split(":")[1])>=18){
+      setDay(true)
+      document.body.style.backgroundColor = "white"
+    }else{
+      document.body.style.backgroundColor = "#212121"
+    }
+  }, [responseData]);
 
   return (
     <div className="responsetab">
@@ -112,32 +119,105 @@ function FridayResponse() {
                 </section>
                 <section className="ai section" ref={messageEndRef}>
                   <img src={fridayimage} alt="FRIDAY" />
-                  {element[1].includes("```") ? (
-                    <div className="result">
-                      <p className="codeheader">
-                        {element[1].split("\n", 1)[0].replace("```", "")}
-                      </p>
-                      <SyntaxHighlighter
-                        language="javascript"
-                        style={okaidia}
-                        className="texthighlighter"
-                      >
-                        {element[1]
-                          .slice(0, element[1].indexOf("```", 3))
-                          .split("\n")
-                          .slice(1)
-                          .join("\n")}
-                      </SyntaxHighlighter>
-                      <Markdown
-                        remarkPlugins={[remarkGfm]}
-                        className="code-content"
-                      >
-                        {element[1].slice(element[1].indexOf("```", 3) + 3)}
-                      </Markdown>
-                    </div>
-                  ) : (
-                    <pre className="alternatepara">{element[1]}</pre>
-                  )}
+                  <div className="result">
+                    <ReactMarkdown
+                      children={element[1]}
+                      remarkPlugins={[remarkGfm]}
+                      className="displaycontent"
+                      components={{
+                        code({ node, inline, className, children, ...props }) {
+                          const match = /language-(\w+)/.exec(className || "");
+
+                          // State for copy button
+                          const [isCopied, setIsCopied] = useState(false);
+
+                          const handleCopy = () => {
+                            setIsCopied(true);
+                            setTimeout(() => setIsCopied(false), 3000); // Reset after 2 seconds
+                          };
+
+                          return !inline && match ? (
+                            <div
+                              style={{
+                                position: "relative",
+                                marginBottom: "20px",
+                              }}
+                            >
+                              <div
+                                style={{
+                                  backgroundColor: "rgb(68, 68, 68)",
+                                  padding: "10px",
+                                  fontSize: "14px",
+                                  fontFamily: '"Roboto Mono", monospace',
+                                  fontWeight: 700,
+                                  borderTopLeftRadius: "4px",
+                                  borderTopRightRadius: "4px",
+                                }}
+                              >
+                                {match[1].toUpperCase()} Code
+                              </div>
+
+                              <div style={{ position: "relative" }}>
+                                <SyntaxHighlighter
+                                  style={okaidia}
+                                  language={match[1]}
+                                  PreTag="div"
+                                  {...props}
+                                  className="syntaxhighlighter"
+                                >
+                                  {String(children).replace(/\n$/, "")}
+                                </SyntaxHighlighter>
+
+                                {/* Copy Button positioned within the SyntaxHighlighter */}
+                                <CopyToClipboard text={String(children)}>
+                                  <button
+                                    onClick={handleCopy}
+                                    style={{
+                                      position: "absolute",
+                                      top: "-43px",
+                                      right: "10px",
+                                      backgroundColor: "white",
+                                      color: "black",
+                                      padding: "5px 10px",
+                                      borderRadius: "4px",
+                                      cursor: "pointer",
+                                      fontSize: "14px",
+                                    }}
+                                  >
+                                    {isCopied ? "Copied!" : "Copy"}
+                                  </button>
+                                </CopyToClipboard>
+                              </div>
+                            </div>
+                          ) : (
+                            <code className={className} {...props}>
+                              {children}
+                            </code>
+                          );
+                        },
+                        ul: ({ children }) => (
+                          <ul className="list-disc pl-5 mb-4 text-gray-50">
+                            {children}
+                          </ul>
+                        ),
+                        ol: ({ children }) => (
+                          <ol className="list-decimal pl-5 mb-4 text-white">
+                            {children}
+                          </ol>
+                        ),
+                        a: ({ href, children }) => (
+                          <a
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-600 underline"
+                          >
+                            {children}
+                          </a>
+                        ),
+                      }}
+                    />
+                  </div>
                 </section>
               </div>
             );
@@ -163,8 +243,7 @@ function FridayResponse() {
             </section>
           </div>
         )}
-        <SpeechRecog/>
-        {/* <section className="emptyspace"></section> */}
+        <SpeechRecog />
       </div>
     </div>
   );

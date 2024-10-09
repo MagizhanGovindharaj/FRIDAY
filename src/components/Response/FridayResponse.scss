@@ -1,3 +1,6 @@
+// body {
+//   background-color: #212121;
+// }
 .responsetab {
   width: 100vw;
   display: flex;
@@ -44,41 +47,20 @@
         justify-content: start;
         gap: 10px;
         min-height: 50px;
-        pre {
-          font-family: system-ui;
-          max-width: 100%;
-          color: white;
-          border-radius: 10px;
-          padding: 5px 15px 7vh 15px;
-          overflow-wrap: break-word;
-          white-space: pre-wrap;
-          border-radius: 20px;
-        }
         .result {
-          border-radius: 10px;
           overflow-x: auto;
           color: white;
-          .codeheader {
-            background-color: rgb(68, 68, 68);
-            height: 40px;
-            padding: 8px 15px;
-            font-family: "Roboto Mono", monospace;
-            font-optical-sizing: auto;
-            font-weight: 700;
-            font-style: normal;
-          }
-          .texthighlighter {
+          display: flex;
+          .syntaxhighlighter{
             position: relative;
-            top: -8px;
+            top: -8.5px;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
           }
-          .code-content {
-            font-family: "Inter", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 200;
-            font-style: normal;
-            color: rgb(243, 243, 243);
-            white-space: pre-wrap; /* Preserve newlines and wrap long lines */
+          .displaycontent{
+            max-width: 100%;
             padding-bottom: 7vh;
+            flex-wrap: wrap;
           }
         }
         img {
@@ -202,11 +184,8 @@
         flex-direction: column;
         gap: 10px;
         .ai {
-          pre {
-            padding: 5px 15px 7vh 15px;
-          }
           .result {
-            .code-content {
+            .displaycontent{
               padding-bottom: 7vh;
             }
           }
