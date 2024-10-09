@@ -7,10 +7,11 @@
   overflow-y: auto;
   .aicontent {
     width: 46em;
-    height: 90vh;
+    height: 91vh;
     display: flex;
     flex-direction: column;
     align-items: start;
+    border: 2px solid red;
     .innerdiv {
       width: 46em;
       display: flex;
@@ -151,7 +152,7 @@
   .responsetab {
     .aicontent {
       width: 46em;
-      height: 90vh;
+      height: 91vh;
       .initial {
         display: flex;
         flex-direction: column;
@@ -193,7 +194,7 @@
   .responsetab {
     .aicontent {
       max-width: 95%;
-      height: 85vh;
+      height: 91vh;
       display: flex;
       align-items: center;
       .innerdiv {
