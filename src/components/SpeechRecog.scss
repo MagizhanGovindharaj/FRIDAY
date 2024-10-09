@@ -22,6 +22,7 @@ body {
     font-size: 18px;
     background-color: #e4e4e4;
     padding: 11px 0px;
+    transition: height 0.3s, bottom 0.3s;
   }
   .textfield::placeholder {
     font-size: 18px;
