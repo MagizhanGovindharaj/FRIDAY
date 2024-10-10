@@ -6,8 +6,6 @@ import { Store } from './components/ReduxStore/Store'
 import { Provider } from 'react-redux'
 
 function App() {
-  const [day_night, setday_night] = useState(false)
-
   return (
     <div className='parent'>
       <Provider store={Store}>

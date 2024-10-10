@@ -21,7 +21,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 function FridayResponse() {
   const queryData = [
     {
-      icon: <TbPresentationAnalytics color="white" />,
+      icon: <TbPresentationAnalytics color="#d48907" />,
       content: "Help me with my Presentation",
     },
     {
@@ -29,7 +29,7 @@ function FridayResponse() {
       content: "What's in the news in Tokyo Today",
     },
     {
-      icon: <FaGamepad color="rgb(130, 255, 101)" />,
+      icon: <FaGamepad color="#438610" />,
       content: "Design a fun coding game",
     },
     {
@@ -46,13 +46,13 @@ function FridayResponse() {
     },
   ];
   const messageEndRef = useRef(null);
-  const [day,setDay] = useState(null);
+  const [day, setDay] = useState(null);
   const [initialQuery, setInitialQuery] = useState(
     queryData.sort(() => 0.5 - Math.random()).slice(0, 4)
   );
 
   const utterence = new SpeechSynthesisUtterance(
-    "Hello There, I am Friday, Developed by Magilan How can i help You"
+    "Hello There, I am Friday, How can i help You"
   );
   utterence.pitch = 1.2;
   utterence.rate = 0.9;
@@ -61,7 +61,6 @@ function FridayResponse() {
   const dispatch = useDispatch();
   const responseData = Object.entries(allData);
 
-  // Function to adjust the number of items based on screen size
   function adjustLayoutBasedOnScreenSize(e) {
     if (e.matches) {
       setInitialQuery(initialQuery.slice(0, 2));
@@ -96,14 +95,17 @@ function FridayResponse() {
   }, []);
   useEffect(() => {
     if (messageEndRef.current) {
-      messageEndRef.current.scrollIntoView({ Behavior: "smooth" });
+      messageEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
 
-    if(Number(new Date().toLocaleTimeString().split(":")[1])<=5 && Number(new Date().toLocaleTimeString().split(":")[1])>=18){
-      setDay(true)
-      document.body.style.backgroundColor = "white"
-    }else{
-      document.body.style.backgroundColor = "#212121"
+    const currentHour = Number(new Date().getHours());
+
+    if (currentHour >= 6 && currentHour < 18) {
+      setDay(true);
+      document.body.style.backgroundColor = "white"; 
+    } else {
+      setDay(false);
+      document.body.style.backgroundColor = "#212121";
     }
   }, [responseData]);
 
@@ -115,11 +117,13 @@ function FridayResponse() {
             return (
               <div className="innerdiv" key={index}>
                 <section className="usersection">
-                  <p className="query">{element[0]}</p>
+                  <p className={!day ? "queryday" : "querynight"}>
+                    {element[0]}
+                  </p>
                 </section>
                 <section className="ai section" ref={messageEndRef}>
                   <img src={fridayimage} alt="FRIDAY" />
-                  <div className="result">
+                  <div className={!day ? "result" : "resultey"}>
                     <ReactMarkdown
                       children={element[1]}
                       remarkPlugins={[remarkGfm]}
@@ -128,12 +132,11 @@ function FridayResponse() {
                         code({ node, inline, className, children, ...props }) {
                           const match = /language-(\w+)/.exec(className || "");
 
-                          // State for copy button
                           const [isCopied, setIsCopied] = useState(false);
 
                           const handleCopy = () => {
                             setIsCopied(true);
-                            setTimeout(() => setIsCopied(false), 3000); // Reset after 2 seconds
+                            setTimeout(() => setIsCopied(false), 3000);
                           };
 
                           return !inline && match ? (
@@ -145,6 +148,7 @@ function FridayResponse() {
                             >
                               <div
                                 style={{
+                                  color: "white",
                                   backgroundColor: "rgb(68, 68, 68)",
                                   padding: "10px",
                                   fontSize: "14px",
@@ -174,11 +178,11 @@ function FridayResponse() {
                                     onClick={handleCopy}
                                     style={{
                                       position: "absolute",
-                                      top: "-43px",
+                                      top: "-41px",
                                       right: "10px",
                                       backgroundColor: "white",
                                       color: "black",
-                                      padding: "5px 10px",
+                                      padding: "0px 10px",
                                       borderRadius: "4px",
                                       cursor: "pointer",
                                       fontSize: "14px",
@@ -196,12 +200,24 @@ function FridayResponse() {
                           );
                         },
                         ul: ({ children }) => (
-                          <ul className="list-disc pl-5 mb-4 text-gray-50">
+                          <ul
+                            className={
+                              !day
+                                ? "list-disc pl-5 mb-4 text-gray-50"
+                                : "list-disc pl-5 mb-4 text-zinc-950"
+                            }
+                          >
                             {children}
                           </ul>
                         ),
                         ol: ({ children }) => (
-                          <ol className="list-decimal pl-5 mb-4 text-white">
+                          <ol
+                            className={
+                              !day
+                                ? "list-decimal pl-5 mb-4 text-white"
+                                : "list-decimal pl-5 mb-4 text-zinc-950"
+                            }
+                          >
                             {children}
                           </ol>
                         ),
@@ -229,21 +245,21 @@ function FridayResponse() {
               {initialQuery.map((element, index) => {
                 return (
                   <div
-                    className="articlediv"
+                    className={!day?"articlediv":"articledivday"}
                     key={index}
                     onClick={() => {
                       getQuery(element.content);
                     }}
                   >
                     {element.icon}
-                    <article>{element.content}</article>
+                    <article className={!day?"article":"articleday"} >{element.content}</article>
                   </div>
                 );
               })}
             </section>
           </div>
         )}
-        <SpeechRecog />
+        <SpeechRecog  day={day}/>
       </div>
     </div>
   );

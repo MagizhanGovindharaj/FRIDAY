@@ -7,7 +7,7 @@ import { addQuestion, addresult } from "./ReduxStore/Slice";
 import { queryFriday } from "./Services/FridayServices";
 import "../components/SpeechRecog.scss";
 
-function SpeechRecog() {
+function SpeechRecog({day}) {
   const [text, setText] = useState("");
   const [toggle, setToggle] = useState({ listen: true });
   const textAreaRef = useRef(null);
@@ -79,7 +79,7 @@ function SpeechRecog() {
   };
 
   return (
-    <div className="speechbar">
+    <div className="speechbar" style={day?{backgroundColor:"#f0f7ff"}:{backgroundColor:"#e4e4e4"}}>
       <div className="micattach">
         {toggle.listen ? (
           <FiMic className="speechicon" onClick={startListening} />
@@ -93,7 +93,7 @@ function SpeechRecog() {
         ref={textAreaRef}
         value={text}
         rows={1}
-        style={{ resize: "none" }}
+        style={{resize: "none",backgroundColor:"transparent" }}
         onChange={handleChange}
         onKeyDown={handleSend} // Changed to onKeyDown to detect Shift + Enter
         className="textfield"
