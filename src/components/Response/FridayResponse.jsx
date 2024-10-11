@@ -101,7 +101,7 @@ function FridayResponse() {
 
     const currentHour = Number(new Date().getHours());
 
-    if (currentHour <= 6 && currentHour >= 0) {
+    if (currentHour >= 6 && currentHour < 18) {
       setDay(true);
       document.body.style.backgroundColor = "white"; 
     } else {
