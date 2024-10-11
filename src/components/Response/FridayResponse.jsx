@@ -101,7 +101,7 @@ function FridayResponse() {
 
     const currentHour = Number(new Date().getHours());
 
-    if (currentHour >= 6 && currentHour < 18) {
+    if (currentHour <= 6 && currentHour >= 0) {
       setDay(true);
       document.body.style.backgroundColor = "white"; 
     } else {
@@ -112,7 +112,7 @@ function FridayResponse() {
 
   return (
     <div className="responsetab">
-      <Navbar className="navbar"/>
+      <Navbar className="nav" day={day}/>
       <div className="aicontent">
         {responseData.length !== 0 ? (
           responseData.map((element, index) => {
@@ -262,7 +262,7 @@ function FridayResponse() {
           </div>
         )}
       </div>
-      <SpeechRecog  day={day}/>
+      <SpeechRecog  day={day} />
     </div>
   );
 }

@@ -8,6 +8,7 @@
   align-items: center;
   width: 46em;
   gap: 10px;
+
   .textfield {
     width: 90%;
     overflow-y: auto;
@@ -19,10 +20,12 @@
     padding: 11px 0px;
     transition: height 0.3s, bottom 0.3s;
   }
+
   .textfield::placeholder {
     font-size: 18px;
     color: rgb(109, 109, 109);
   }
+
   .micattach {
     display: flex;
     flex-direction: row;
@@ -31,11 +34,13 @@
     margin: auto 0px 11px 13px;
     gap: 5px;
   }
+
   .senddiv {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     margin: auto 3px 5px 0;
+
     .sendicon {
       font-size: 40px;
       transition-duration: 0.5s;
@@ -43,16 +48,18 @@
       transition-timing-function: linear;
     }
   }
+
   .speechicon {
     font-size: 25px;
   }
+
   .attachment {
     font-size: 28px;
   }
 }
-@media screen and (min-width: "810px") and (max-width: "1280px") {
+
+@media screen and (min-width: 810px) and (max-width: 1280px) {
   .speechbar {
-    position: fixed;
     bottom: 5vh;
     background-color: #e4e4e4;
     border-radius: 25px;
@@ -64,9 +71,15 @@
     gap: 10px;
   }
 }
-@media screen and (max-width: "810px") {
+
+.responsive {
+  width: 70%;
+  max-width: 46em;
+  border-radius: 25px;
+}
+
+@media screen and (max-width: 810px) {
   .speechbar {
-    position: fixed;
     bottom: 5vh;
     background-color: #e4e4e4;
     border-radius: 25px;
@@ -76,6 +89,7 @@
     align-items: center;
     width: 90%;
     gap: 10px;
+
     .textfield {
       width: 90%;
       overflow-y: auto;
@@ -87,29 +101,33 @@
       background-color: #e4e4e4;
       padding: 11px 0px;
     }
+
     .textfield::placeholder {
       font-size: 18px;
     }
+
     .micattach {
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: flex-start;
-      // margin: auto 0 8px 13px;
       gap: 5px;
     }
+
     .senddiv {
       display: flex;
       align-items: center;
       justify-content: center;
-      // margin: auto 3px 2px 0;
+
       .sendicon {
         font-size: 40px;
       }
     }
+
     .speechicon {
       font-size: 25px;
     }
+
     .attachment {
       font-size: 28px;
     }

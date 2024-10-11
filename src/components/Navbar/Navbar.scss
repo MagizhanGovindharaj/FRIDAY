@@ -1,39 +1,102 @@
-.navbar{
+.navbar_menu {
     position: fixed;
     height: 4em;
+    left: 0px;
     z-index: 2;
-    background-color: white;
+    background-color: transparent;
     width: 100%;
     display: flex;
-    .menubar_newchat{
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        font-size: 25px;
-        width: 120px;
+  .menubar_newchat_menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 26px;
+    font-size: 25px;
+    width: 301px;
+    transition: width 0.5s ease;
+  }
+  .ainame_username_menu {
+    padding: 0 20px 0 25px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    h1 {
+      font-size: 20px;
+      font-weight: bold;
     }
-    .ainame_username{
-        padding: 0 20px;
-        display: flex;
-        width: 100%;
-        align-items: center;
-        justify-content: space-between;
-        h1{
-            font-size: 20px;
-            font-weight: bold;
+    h2 {
+    position: fixed;
+    right: 40px;
+      font-size: 20px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      width: 40px;
+      border-radius: 1.5em;
+      background-color: rgb(157, 157, 157);
+      color: rgb(16, 131, 255);
+    }
+  }
+}
+.navbar {
+  position: fixed;
+  height: 4em;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  .menubar_newchat {
+    display: flex;
+    margin-top: 20px;
+    justify-content: flex-end;
+    gap: 25px;
+    font-size: 25px;
+    width: 105px;
+    // transition: width 0.2s ease;
+  }
+  .ainame_username {
+    padding: 0 25px;
+    display: flex;
+    width: 84%;
+    align-items: center;
+    justify-content: space-between;
+    h1 {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    h2 {
+        position: fixed;
+        right: 40px;
+      font-size: 20px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      width: 40px;
+      border-radius: 1.5em;
+      background-color: rgb(157, 157, 157);
+      color: rgb(16, 131, 255);
+    }
+  }
+}
+@media screen and (max-width:"1280px"){
+    .navbar{
+    .ainame_username {
+        h2 {
+            position: fixed;
+            right: 25px;
         }
-        h2{
-            font-size: 20px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 40px;
-            width: 40px;
-            border-radius: 1.5em;
-            background-color: rgba(230, 230, 230, 0.492);
-            color: black;
-            // border: 2px solid red;
+      }
+    }
+    .navbar_menu {
+      .ainame_username_menu {
+        h2 {
+        position: fixed;
+        right: 25px;
         }
+      }
     }
 }

@@ -8,16 +8,23 @@
   align-items: center;
   gap: 30px;
   overflow-y: auto;
-  // border: 2px solid red;
+  height: 90vh;
+
+  /* For Firefox */
+  scroll-behavior: smooth;
+  scrollbar-width:auto; /* Thin scrollbar */
+  scrollbar-color: #383838 #f0f0f000; /* Thumb and track color */
   .navbar{
     width: 98.5vw;
   }
+  .navbar_menu{
+    width: 99vw;
+  }
   .aicontent {
-    // border: 2px solid red;
     width: 46em;
     position: relative;
     top: 3em;
-    height: 90vh;
+    height: 83vh;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -110,7 +117,6 @@
       width: 46em;
       padding-top: 200px;
       gap: 100px;
-      // background-color: #d48907;
       img {
         border-radius: 50px;
         height: 100px;
@@ -191,20 +197,27 @@
 @media screen and (min-width: "810px") and (max-width: "1280px") {
   .responsetab {
     .aicontent {
-      width: 46em;
-      height: 90vh;
+      max-width: 100%;
+      height: 85vh;
+      display: flex;
+      align-items: center;
+      .innerdiv {
+        max-width: 95%;
+      }
       .initial {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 46em;
+        width: 100%;
         margin: auto;
         padding-top: 100px;
         gap: 100px;
         section {
           display: flex;
           justify-content: center;
+          max-width: 90%;
           gap: 20px;
+          flex-wrap: wrap;
           .articlediv {
             width: 150px;
             border-radius: 15px;
@@ -234,7 +247,7 @@
   .responsetab {
     .aicontent {
       max-width: 95%;
-      height: 85vh;
+      height: 82.5vh;
       display: flex;
       align-items: center;
       .innerdiv {
