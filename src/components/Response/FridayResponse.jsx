@@ -16,6 +16,7 @@ import fridayimage from "../../assets/Robot_F.png";
 import fridayjpg from "../../assets/Robot.jpg";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import Navbar from "../Navbar/Navbar";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 function FridayResponse() {
@@ -111,6 +112,7 @@ function FridayResponse() {
 
   return (
     <div className="responsetab">
+      <Navbar className="navbar"/>
       <div className="aicontent">
         {responseData.length !== 0 ? (
           responseData.map((element, index) => {
@@ -259,8 +261,8 @@ function FridayResponse() {
             </section>
           </div>
         )}
-        <SpeechRecog  day={day}/>
       </div>
+      <SpeechRecog  day={day}/>
     </div>
   );
 }

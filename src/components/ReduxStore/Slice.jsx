@@ -17,5 +17,6 @@ const Slice = createSlice({
     }
 })
 
+
 export const {addQuestion,addresult} = Slice.actions
 export default Slice.reducer

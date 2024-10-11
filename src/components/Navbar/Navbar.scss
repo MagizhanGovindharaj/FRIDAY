@@ -1,0 +1,39 @@
+.navbar{
+    position: fixed;
+    height: 4em;
+    z-index: 2;
+    background-color: white;
+    width: 100%;
+    display: flex;
+    .menubar_newchat{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        font-size: 25px;
+        width: 120px;
+    }
+    .ainame_username{
+        padding: 0 20px;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        h1{
+            font-size: 20px;
+            font-weight: bold;
+        }
+        h2{
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            width: 40px;
+            border-radius: 1.5em;
+            background-color: rgba(230, 230, 230, 0.492);
+            color: black;
+            // border: 2px solid red;
+        }
+    }
+}
