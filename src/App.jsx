@@ -21,7 +21,7 @@ function App() {
   return (
     <div className='parent'>
       <section className='bodysection'>
-        <Menubar day={day}/>
+        <Menubar day={day} allData={allData}/>
         <FridayResponse className="friday"/>
       </section>
     </div>

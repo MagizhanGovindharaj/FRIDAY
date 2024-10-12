@@ -1,11 +1,11 @@
 .navbar_menu {
-    position: fixed;
-    height: 4em;
-    left: 0px;
-    z-index: 2;
-    background-color: transparent;
-    width: 100%;
-    display: flex;
+  position: fixed;
+  height: 4em;
+  left: 0px;
+  z-index: 2;
+  background-color: transparent;
+  width: 100%;
+  display: flex;
   .menubar_newchat_menu {
     display: flex;
     align-items: center;
@@ -13,7 +13,7 @@
     padding: 0 26px;
     font-size: 25px;
     width: 301px;
-    transition: width 0.5s ease;
+    transition: width 0.3s ease;
   }
   .ainame_username_menu {
     padding: 0 20px 0 25px;
@@ -25,19 +25,10 @@
       font-size: 20px;
       font-weight: bold;
     }
-    h2 {
-    position: fixed;
-    right: 40px;
-      font-size: 20px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 40px;
-      width: 40px;
-      border-radius: 1.5em;
-      background-color: rgb(157, 157, 157);
-      color: rgb(16, 131, 255);
+    .userlogin {
+      position: fixed;
+      right: 40px;
+      font-size: 25px;
     }
   }
 }
@@ -56,7 +47,7 @@
     padding: 0 0 0 26px;
     font-size: 25px;
     width: 105px;
-    transition: width 0.5s ease;
+    transition: width 0.3s ease;
   }
   .ainame_username {
     padding: 0 25px;
@@ -69,37 +60,100 @@
       font-size: 20px;
       font-weight: bold;
     }
-    h2 {
-        position: fixed;
-        right: 40px;
-      font-size: 20px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 40px;
-      width: 40px;
-      border-radius: 1.5em;
-      background-color: rgb(157, 157, 157);
-      color: rgb(16, 131, 255);
+    .userlogin {
+      position: fixed;
+      right: 40px;
+      font-size: 25px;
     }
   }
 }
-@media screen and (max-width:"1280px"){
-    .navbar{
+@media screen and (max-width: "1280px") {
+  .navbar {
     .ainame_username {
-        h2 {
-            position: fixed;
-            right: 25px;
-        }
-      }
-    }
-    .navbar_menu {
-      .ainame_username_menu {
-        h2 {
+      .userlogin {
         position: fixed;
         right: 25px;
-        }
       }
     }
+  }
+  .navbar_menu {
+    .ainame_username_menu {
+      .userlogin {
+        position: fixed;
+        right: 25px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: "810px") {
+  .navbar_menu {
+    position: fixed;
+    height: 4em;
+    left: 0px;
+    z-index: 4;
+    background-color: transparent;
+    width: 100%;
+    display: flex;
+    .menubar_newchat_menu {
+      position: absolute;
+      z-index: 3;
+      padding: 0 26px;
+      font-size: 25px;
+      height: 100%;
+      width: 310px;
+    }
+    .ainame_username_menu {
+      position: absolute;
+      display: flex;
+      height: 100%;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+    transition: none;
+      h1 {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .userlogin {
+        display: none;
+      }
+    }
+  }
+  .navbar {
+    position: fixed;
+    height: 4em;
+    left: 0px;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    .menubar_newchat {
+      position: absolute;
+      z-index: 2;
+      height: 100%;
+      width: 55px;
+      transition: none;
+      .editicon{
+        position: fixed;
+        right: 25px;
+        font-size: 25px;
+      }
+    }
+    .ainame_username {
+      position: absolute;
+      left:8px;
+      display: flex;
+      height: 100%;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      h1 {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .userlogin {
+        display: none;
+      }
+    }
+  }
 }
