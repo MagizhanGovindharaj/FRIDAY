@@ -21,8 +21,8 @@ function Navbar({day}) {
   return (
     <>
       {toogleBoolean ? (
-        <nav className="navbar" >
-          <div className="menubar_newchat" >
+        <nav className="navbar" style={day?{backgroundColor:"white"}:{backgroundColor:"#212121"}}>
+          <div className="menubar_newchat" style={day?{backgroundColor:"white"}:{backgroundColor:"#212121"}}>
             <RiMenuFold2Fill onClick={showMenu} style={day?{color:"#212121"}:{color:"white"}} />
             <FiEdit style={day?{color:"#212121"}:{color:"white"}} />
           </div>

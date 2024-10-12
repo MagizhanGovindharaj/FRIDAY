@@ -44,21 +44,24 @@
 .navbar {
   position: fixed;
   height: 4em;
+  left: 0px;
   z-index: 2;
   width: 100%;
   display: flex;
   .menubar_newchat {
     display: flex;
-    margin-top: 20px;
-    justify-content: flex-end;
-    gap: 25px;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0 0 26px;
     font-size: 25px;
     width: 105px;
-    // transition: width 0.2s ease;
+    transition: width 0.5s ease;
   }
   .ainame_username {
     padding: 0 25px;
     display: flex;
+    height: 100%;
     width: 84%;
     align-items: center;
     justify-content: space-between;
